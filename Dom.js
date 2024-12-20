@@ -1,5 +1,5 @@
 // your JavaScript file
-const container = document.querySelector("#container");
+const container = document.querySelector("#container"); // querySelector :  used to select and return the first element that matches a specified CSS selector from the DOM 
 
 const content = document.createElement("div");
 content.classList.add("content");
@@ -26,6 +26,6 @@ const paragraph_2 = document.createElement("p");
 paragraph_2.textContent = "ME TOO!";
 
 content_2.appendChild(header_1);
-content_2.appendChild(paragraph_2);
+content_2.appendChild(paragraph_2); // appendChild can only do one at a time
 
 container.appendChild(content_2);
