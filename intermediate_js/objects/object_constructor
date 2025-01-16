@@ -1,0 +1,56 @@
+function my_object(name, age) {
+    this.name = name;
+    this.age = age;
+    this.say_age = function () {
+        console.log(this.age);
+    };
+}
+
+
+function Person(name) {
+    this.name = name;
+}
+
+Person.prototype.sayName = function () {
+    console.log(`Hello, I'm ${this.name}!`);
+};
+
+my_object.prototype.getMarker = function () {
+    console.log(`My marker is '${this.marker}'`);
+};
+
+my_object.prototype.sayHello = function () { // using prototype to definne a function outside of the prototype function
+    console.log("Hello, I'm a player!");
+};
+const object_1 = new my_object("Chien", 14);
+
+object_1.sayHello(); // logs "Hello, I'm a player!"
+
+
+console.log(object_1.name)
+
+
+
+Object.getPrototypeOf(object_1) === my_object.prototype; // returns true
+Object.getPrototypeOf(my_object.prototype) === Object.prototype; // true
+console.log(Object.getPrototypeOf(object_1) === my_object.prototype);
+
+// part of Object aviable functions
+console.log(object_1.valueOf()); // Output: Object { name: "steve", marker: "X", sayName: sayName() }
+
+//checking what function is avaible from each object
+object_1.hasOwnProperty('valueOf'); // false
+Object.prototype.hasOwnProperty('valueOf'); // true
+Object.prototype.hasOwnProperty('hasOwnProperty'); // true
+
+
+// Now make `Player` objects inherit from `Person`
+Object.setPrototypeOf(my_object.prototype, Person.prototype);
+Object.getPrototypeOf(my_object.prototype); // returns Person.prototype
+
+const object_3 = new my_object('steve', 'X');
+const object_4 = new my_object('also steve', 'O');
+
+
+object_3.getMarker();
+object_4.sayName();
